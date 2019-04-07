@@ -1,0 +1,57 @@
+<!-- The template for listing the available courses
+create an HTML list to display all Categories object 
+and build a link to the `course_list_category` URL for each of them
+
+We add a `selected` HTML class to highlight the current subject, if any
+
+We iterate over every Course object, displaying the total number of modules and the intructor name
+
+-->
+
+{% extends "base.html" %}
+
+{% block title %}
+    {% if category %}
+        {{ category.title }} courses
+    {% else %}
+        All courses
+    {% endif %}
+{% endblock %}
+
+{% block content %}
+<h1>
+    {% if category %}
+        {{ category.title }} courses
+    {% else %}
+        All courses
+    {% endif %}
+</h1>
+<div class="contents">
+    <h3>Categories</h3>
+    <ul id="modules">
+        <li {% if not category %}class="selected"{% endif %}>
+            <a href="{% url "course_list" %}">All</a>
+        </li>
+        {% for s in categories %}
+            <li {% if category == s %}class="selected"{% endif %}>
+                <a href="{% url "course_list_category" s.slug %}">
+                    {{ s.title }}
+                    <br><span>{{ s.total_courses }} courses</span>
+                </a>
+            </li>
+        {% endfor %}
+    </ul>
+</div>
+<div class="module">
+    {% for course in courses %}
+        {% with category=course.category %}
+            <h3><a href="{% url "course_detail" course.slug %}">{{ course.title }}</a></h3>
+            <p>
+                <a href="{% url "course_list_category" category.slug %}">{{ category }}</a>.
+                {{ course.total_modules }} modules.
+                Instructor: {{ course.owner.get_full_name }}
+            </p>
+        {% endwith %}
+    {% endfor %}
+</div>
+{% endblock %}

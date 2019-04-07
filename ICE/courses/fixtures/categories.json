@@ -1,0 +1,50 @@
+[
+{
+  "model": "courses.category",
+  "pk": 1,
+  "fields": {
+    "title": "Mergers and Acquisitions",
+    "slug": "mergers-and-acquisitions"
+  }
+},
+{
+  "model": "courses.category",
+  "pk": 2,
+  "fields": {
+    "title": "Markets",
+    "slug": "markets"
+  }
+},
+{
+  "model": "courses.category",
+  "pk": 3,
+  "fields": {
+    "title": "Risk Management",
+    "slug": "risk-management"
+  }
+},
+{
+  "model": "courses.category",
+  "pk": 4,
+  "fields": {
+    "title": "Securities",
+    "slug": "securities"
+  }
+},
+{
+  "model": "courses.category",
+  "pk": 5,
+  "fields": {
+    "title": "Financial Modelling",
+    "slug": "financial-modelling"
+  }
+},
+{
+  "model": "courses.category",
+  "pk": 6,
+  "fields": {
+    "title": "Operations",
+    "slug": "operations"
+  }
+}
+]

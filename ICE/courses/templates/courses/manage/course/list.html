@@ -1,0 +1,36 @@
+<!--
+    This is the template for the `ManageCourseListView` view. In this template,
+we list the courses created by the current user. We include links to
+edit or delete each course, and a link to create new courses.
+-->
+
+{% extends "base.html" %}
+
+{% block title %}My courses{% endblock %}
+
+{% block content %}
+    <h1>My courses</h1>
+
+    <div class="module">
+        {% for course in object_list %}
+            <div class="course-info">
+                <h3>{{ course.title }}</h3>
+                <p>
+                    <a href="{% url "course_edit" course.id %}">Edit</a>
+                    <a href="{% url "course_delete" course.id %}">Delete</a>
+                    <a href="{% url "course_module_update" course.id %}">Edit modules</a>
+                    {% if course.modules.count > 0 %}
+                        <a href="{% url "module_content_list" course.modules.first.id %}">
+                        Manage contents</a>
+                    {% endif %}
+                </p>
+            </div>
+            {% empty %}
+            <p>You haven't created any courses</p>
+        {% endfor %}
+        <p>
+            <a href="{% url "course_create" %}" class = "button">Create New Course</a>
+        </p>
+    </div>
+{% endblock %}
+

@@ -1,0 +1,43 @@
+<!-- 
+To support the drag-n-drop functionality in the template
+We will use the jQuery UI library
+- jQuery UI is built on top of jQuery and it provides a set of interface interactions, effects, and widgets
+- We will use its sortable element
+  - Load jQuery UI in the base template
+ -->
+
+{% load staticfiles %}
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>{% block title %}ICE{% endblock %}</title>
+  <link href="{% static "css/base.css" %}" rel="stylesheet">
+</head>
+<body>
+  <div id="header">
+    <a href="/" class="logo">ICE</a>
+    <ul class="menu">
+      {% if request.user.is_authenticated %}
+        <li><a href="{% url "logout" %}">Sign out</a></li>
+      {% else %}
+        <li><a href="{% url "login" %}">Sign in</a></li>
+      {% endif %}
+    </ul>
+  </div>
+  <div id="content">
+    {% block content %}
+    {% endblock %}
+  </div>
+ 
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <!-- Load the jQuery UI library -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script> 
+  <script>
+    $(document).ready(function() {
+      {% block domready %}
+      {% endblock %}
+    });
+  </script>
+</body>
+</html>
