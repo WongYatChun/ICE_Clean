@@ -76,7 +76,9 @@ password;
 to the subset of users registered as Instructors;
 
 
-Not yet implemented: Send invitations to Instuctors, Quiz, CECUs related, statistics
+Not yet implemented: 
+
+Send invitations to Instuctors, Quiz, CECUs related, statistics
 
 (for Learners) Have a record kept of courses they have passed and the date of completion;
 
